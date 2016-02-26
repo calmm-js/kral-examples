@@ -12,7 +12,7 @@ const Src = ({src}) => <a target="_blank" href={`../src/${src}`}>{src}</a>
 
 export default () =>
   <main>
-    <h1>Bacon+React+Atom Examples</h1>
+    <h1>Kefir+React+Atom Examples</h1>
 
     <section>
       <h2>Simple counter</h2>
