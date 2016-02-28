@@ -1,27 +1,9 @@
-import Atom                    from "kefir-atom"
-import K, {fromKefir, fromIds} from "kefir-react-html"
-import React                   from "react"
+import Atom         from "kefir-atom"
+import K, {fromIds} from "kefir-react-html"
+import React        from "react"
 
-import * as M from "./phonebook-meta"
-
-const TextInput = ({value = Atom("")}) => {
-  const editing = Atom(false)
-  const exit = () => editing.set(false)
-  const save = e => {value.set(e.target.value); exit(e)}
-  return fromKefir(K(editing, e => e
-    ? <K.input key="1"
-               type="text"
-               autoFocus
-               defaultValue={value}
-               onKeyDown={e => e.which === 13 && save(e)
-                            || e.which === 27 && exit(e)}
-               onBlur={save}/>
-    : <K.input key="0"
-               type="text"
-               disabled
-               {...{value}}
-               onDoubleClick={() => editing.set(true)}/>))
-}
+import TextInput from "./text-input"
+import * as M    from "./phonebook-meta"
 
 const Contact = ({contact}) =>
   <div>
