@@ -1,12 +1,13 @@
 import L    from "partial.lenses"
 import R    from "ramda"
-import uuid from "uuid"
+
+import {iota} from "./util"
 
 export const mock =
-  [{id: uuid.v4(), name: "Mr Digits", number: "1-23-456789"}]
+  [{name: "Mr Digits", number: "1-23-456789"}]
 
 export const Contact = {
-  create: ({name = "", number = ""} = {}) => ({id: uuid.v4(), name, number}),
+  create: ({name = "", number = ""} = {}) => ({name, number}),
   remove: () => {},
   id: "id",
   name: "name",
@@ -14,8 +15,7 @@ export const Contact = {
 }
 
 export const Contacts = {
-  ids: R.map(L.view(Contact.id)),
-  contactWith: id => L.find(R.whereEq(id))
+  indices: R.pipe(R.length, iota)
 }
 
 export const Phonebook = {

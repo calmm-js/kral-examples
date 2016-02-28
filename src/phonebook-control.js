@@ -14,9 +14,8 @@ const Contact = ({contact}) =>
 
 const Contacts = ({contacts}) =>
   <K.div>
-    {fromIds(K(contacts, M.Contacts.ids), id =>
-     <Contact key={id}
-              contact={contacts.lens(M.Contacts.contactWith({id}))}/>)}
+    {fromIds(K(contacts, M.Contacts.indices), i =>
+     <Contact key={i} contact={contacts.lens(i)}/>)}
   </K.div>
 
 export default ({phonebook = Atom(M.mock)}) =>
