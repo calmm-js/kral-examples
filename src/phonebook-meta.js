@@ -20,5 +20,5 @@ export const Contacts = {
 
 export const Phonebook = {
   contacts: L.define([]),
-  addContact: contact => R.append(Contact.create(contact))
+  addContact: R.pipe(Contact.create, R.append)
 }
