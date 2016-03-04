@@ -11,8 +11,8 @@ export default ({value = Atom("")}) => {
                type="text"
                autoFocus
                defaultValue={value}
-               onKeyDown={e => e.which === 13 && save(e)
-                            || e.which === 27 && exit(e)}
+               onKeyDown={({key}) => key === "Enter"  && save(e)
+                                  || key === "Escape" && exit(e)}
                onBlur={save}/>
     : <K.input key="0"
                type="text"
