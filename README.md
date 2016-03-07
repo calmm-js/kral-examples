@@ -1,8 +1,8 @@
-[![](https://david-dm.org/calmm-js/kefir-react-atom-examples.svg)](https://david-dm.org/calmm-js/kefir-react-atom-examples)
+[![](https://david-dm.org/calmm-js/kefir.react.atom-examples.svg)](https://david-dm.org/calmm-js/kefir.react.atom-examples)
 
 ```bash
-git clone https://github.com/calmm-js/kefir-react-atom-examples.git
-cd kefir-react-atom-examples
+git clone https://github.com/calmm-js/kefir.react.atom-examples.git
+cd kefir.react.atom-examples
 npm install
 npm run build
 ```

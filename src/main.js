@@ -1,4 +1,4 @@
-import Atom  from "kefir-atom"
+import Atom  from "kefir.atom"
 import React from "react"
 
 import BMI       from "./bmi-control"

@@ -1,5 +1,5 @@
-import Atom      from "kefir-atom"
-import K, {bind} from "kefir-react-html"
+import Atom      from "kefir.atom"
+import K, {bind} from "kefir.react.html"
 import React     from "react"
 
 export default ({checked = Atom(false)}) =>

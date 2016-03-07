@@ -1,5 +1,5 @@
-import Atom                 from "kefir-atom"
-import K, {bind, bindProps} from "kefir-react-html"
+import Atom                 from "kefir.atom"
+import K, {bind, bindProps} from "kefir.react.html"
 import L                    from "partial.lenses"
 import React                from "react"
 

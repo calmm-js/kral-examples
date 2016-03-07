@@ -1,4 +1,4 @@
-import K     from "kefir-react-html"
+import K     from "kefir.react.html"
 import Kefir from "kefir"
 import React from "react"
 

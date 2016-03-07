@@ -1,5 +1,5 @@
-import Atom         from "kefir-atom"
-import K, {fromIds} from "kefir-react-html"
+import Atom         from "kefir.atom"
+import K, {fromIds} from "kefir.react.html"
 import React        from "react"
 
 import TextInput from "./text-input"

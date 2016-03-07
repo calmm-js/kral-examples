@@ -1,5 +1,5 @@
-import Atom  from "kefir-atom"
-import K     from "kefir-react-html"
+import Atom  from "kefir.atom"
+import K     from "kefir.react.html"
 import R     from "ramda"
 import React from "react"
 

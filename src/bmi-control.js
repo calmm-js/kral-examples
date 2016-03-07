@@ -1,5 +1,5 @@
-import Atom               from "kefir-atom"
-import K, {bind, classes} from "kefir-react-html"
+import Atom               from "kefir.atom"
+import K, {bind, classes} from "kefir.react.html"
 import React              from "react"
 
 import * as M from "./bmi-meta"

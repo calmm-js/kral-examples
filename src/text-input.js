@@ -1,5 +1,5 @@
-import Atom           from "kefir-atom"
-import K, {fromKefir} from "kefir-react-html"
+import Atom           from "kefir.atom"
+import K, {fromKefir} from "kefir.react.html"
 import React          from "react"
 
 export default ({value = Atom("")}) => {
