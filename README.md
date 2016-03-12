@@ -1,10 +1,9 @@
-[![](https://david-dm.org/calmm-js/kefir.react.atom-examples.svg)](https://david-dm.org/calmm-js/kefir.react.atom-examples)
+[![Build Status](https://travis-ci.org/calmm-js/kral-examples.svg?branch=master)](https://travis-ci.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples.svg)](https://david-dm.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples/dev-status.svg)](https://david-dm.org/calmm-js/kral-examples#info=devDependencies)
 
 ```bash
-git clone https://github.com/calmm-js/kefir.react.atom-examples.git
-cd kefir.react.atom-examples
+git clone https://github.com/calmm-js/kral-examples.git
+cd kral-examples
 npm install
-npm run build
 ```
 
 Then `open public/index.html` file in your browser.
