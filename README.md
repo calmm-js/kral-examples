@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/calmm-js/kral-examples.svg?branch=master)](https://travis-ci.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples.svg)](https://david-dm.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples/dev-status.svg)](https://david-dm.org/calmm-js/kral-examples#info=devDependencies) [![Gitter](https://img.shields.io/gitter/room/calmm-js/chat.js.svg?style=flat-square)](https://gitter.im/calmm-js)
+[![Build Status](https://travis-ci.org/calmm-js/kral-examples.svg?branch=master)](https://travis-ci.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples.svg)](https://david-dm.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples/dev-status.svg)](https://david-dm.org/calmm-js/kral-examples#info=devDependencies) [![Gitter](https://img.shields.io/gitter/room/calmm-js/chat.js.svg?style=flat-square)](https://gitter.im/calmm-js/chat)
 
 ```bash
 git clone https://github.com/calmm-js/kral-examples.git
