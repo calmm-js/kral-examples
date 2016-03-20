@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/calmm-js/kral-examples.svg?branch=master)](https://travis-ci.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples.svg)](https://david-dm.org/calmm-js/kral-examples) [![](https://david-dm.org/calmm-js/kral-examples/dev-status.svg)](https://david-dm.org/calmm-js/kral-examples#info=devDependencies) [![Gitter](https://img.shields.io/gitter/room/calmm-js/chat.js.svg?style=flat-square)](https://gitter.im/calmm-js/chat)
 
+Prebuilt site: [Kefir+React+Atom Examples](http://calmm-js.github.io/kral-examples/public/index.html)
+
+To try locally:
+
 ```bash
 git clone https://github.com/calmm-js/kral-examples.git
 cd kral-examples
