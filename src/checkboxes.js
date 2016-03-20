@@ -1,7 +1,6 @@
-import Atom               from "kefir.atom"
-import K, {bind, fromIds} from "kefir.react.html"
-import R                  from "ramda"
-import React              from "react"
+import K, {fromIds} from "kefir.react.html"
+import R            from "ramda"
+import React        from "react"
 
 import {iota} from "./util"
 
