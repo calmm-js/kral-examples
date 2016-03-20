@@ -15,7 +15,7 @@ const RemovableCheckbox = ({checked}) =>
 export default ({checkeds}) =>
   <div>
     <button onClick={() => checkeds.modify(R.append(false))}>New</button>
-    <K.div style={{display: "flex"}}>
+    <K.div style={{display: "flex", flexWrap: "wrap"}}>
       {fromIds(K(checkeds, R.pipe(R.length, iota)), i =>
         <RemovableCheckbox key={i} checked={checkeds.lens(i)}/>)}
     </K.div>

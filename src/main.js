@@ -1,4 +1,5 @@
 import Atom  from "kefir.atom"
+import L     from "partial.lenses"
 import React from "react"
 import Undo  from "atom.undo"
 
@@ -22,73 +23,93 @@ export default () =>
     <h1>Kefir+React+Atom Examples</h1>
 
     <section>
-      <h2>Simple counter</h2>
+      <h2 id="counter">Simple counter</h2>
       <Counter/>
-      <Src src="counter.js"/>
+      <ul>
+        <li><Src src="counter.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Simple clock</h2>
+      <h2 id="clock">Simple clock</h2>
       <Clock/>
-      <Src src="clock.js"/>
+      <ul>
+        <li><Src src="clock.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Simple checkbox</h2>
+      <h2 id="checkbox">Simple checkbox</h2>
       <Checkbox/>
-      <Src src="checkbox.js"/>
+      <ul>
+        <li><Src src="checkbox.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Checkboxes with Undo-Redo</h2>
+      <h2 id="undo-redo-checkboxes">Checkboxes with Undo-Redo</h2>
       {pass(Undo({value: [true, false, true], Atom}), checkeds =>
             <WithUndoRedo undo={checkeds.undo}
                           redo={checkeds.redo}>
-              <Checkboxes {...{checkeds}}/>
+              <Checkboxes checkeds={checkeds.lens(L.define([]))}/>
             </WithUndoRedo>)}
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
         <li><Src src="checkboxes.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
     <section>
-      <h2>Input Add</h2>
+      <h2 id="input-add">Input Add</h2>
       <InputAdd/>
-      <Src src="input-add.js"/>
+      <ul>
+        <li><Src src="input-add.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Scroll</h2>
+      <h2 id="scroll">Scroll</h2>
       <Scroll/>
-      <Src src="scroll.js"/>
+      <ul>
+        <li><Src src="scroll.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
-      <h2>Phonebook</h2>
+      <h2 id="phonebook">Phonebook</h2>
       <Phonebook/>
       <ul>
         <li><Src src="phonebook-control.js"/></li>
         <li><Src src="phonebook-meta.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
     <section>
-      <h2>BMI control</h2>
+      <h2 id="bmi">BMI control</h2>
       <BMI/>
       <ul>
         <li><Src src="bmi-control.js"/></li>
         <li><Src src="bmi-meta.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
     <section>
-      <h2>BMI controls with a shared model</h2>
+      <h2 id="bmi-shared">BMI controls with a shared model</h2>
       <div style={{display: "flex"}}>
         {pass(Atom(mock), bmi =>
               [<BMI key="1" bmi={bmi}/>,
                <BMI key="2" bmi={bmi}/>])}
       </div>
+      <ul>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
-
   </main>
