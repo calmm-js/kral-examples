@@ -46,6 +46,10 @@ export default () =>
                           redo={checkeds.redo}>
               <Checkboxes {...{checkeds}}/>
             </WithUndoRedo>)}
+      <ul>
+        <li><Src src="with-undo-redo.js"/></li>
+        <li><Src src="checkboxes.js"/></li>
+      </ul>
     </section>
 
     <section>
