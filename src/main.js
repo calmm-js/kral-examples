@@ -21,24 +21,31 @@ export default () =>
   <main>
     <h1>Kefir+React+Atom Examples</h1>
 
-    See also: <Src src="main.js"/>
-
     <section>
       <h2 id="counter">Simple counter</h2>
       <Counter/>
-      <Src src="counter.js"/>
+      <ul>
+        <li><Src src="counter.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
       <h2 id="clock">Simple clock</h2>
       <Clock/>
-      <Src src="clock.js"/>
+      <ul>
+        <li><Src src="clock.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
       <h2 id="checkbox">Simple checkbox</h2>
       <Checkbox/>
-      <Src src="checkbox.js"/>
+      <ul>
+        <li><Src src="checkbox.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
@@ -51,19 +58,26 @@ export default () =>
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
         <li><Src src="checkboxes.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="input-add">Input Add</h2>
       <InputAdd/>
-      <Src src="input-add.js"/>
+      <ul>
+        <li><Src src="input-add.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
       <h2 id="scroll">Scroll</h2>
       <Scroll/>
-      <Src src="scroll.js"/>
+      <ul>
+        <li><Src src="scroll.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
 
     <section>
@@ -72,6 +86,7 @@ export default () =>
       <ul>
         <li><Src src="phonebook-control.js"/></li>
         <li><Src src="phonebook-meta.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
@@ -81,6 +96,7 @@ export default () =>
       <ul>
         <li><Src src="bmi-control.js"/></li>
         <li><Src src="bmi-meta.js"/></li>
+        <li><Src src="main.js"/></li>
       </ul>
     </section>
 
@@ -91,5 +107,8 @@ export default () =>
               [<BMI key="1" bmi={bmi}/>,
                <BMI key="2" bmi={bmi}/>])}
       </div>
+      <ul>
+        <li><Src src="main.js"/></li>
+      </ul>
     </section>
   </main>
