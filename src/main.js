@@ -22,6 +22,8 @@ export default () =>
   <main>
     <h1>Kefir+React+Atom Examples</h1>
 
+    <a href="https://github.com/calmm-js/kral-examples">GitHub</a>
+
     <section>
       <h2 id="counter">Simple counter</h2>
       <Counter/>
