@@ -1,18 +1,19 @@
 import Atom  from "kefir.atom"
-import K     from "kefir.react.html"
-import R     from "ramda"
 import React from "react"
 import Undo  from "atom.undo"
 
-import BMI        from "./bmi-control"
-import {mock}     from "./bmi-meta"
-import Checkbox   from "./checkbox"
-import Checkboxes from "./checkboxes"
-import Clock      from "./clock"
-import Counter    from "./counter"
-import InputAdd   from "./input-add"
-import Phonebook  from "./phonebook-control"
-import Scroll     from "./scroll"
+import BMI          from "./bmi-control"
+import {mock}       from "./bmi-meta"
+import Checkbox     from "./checkbox"
+import Checkboxes   from "./checkboxes"
+import WithUndoRedo from "./with-undo-redo"
+import Clock        from "./clock"
+import Counter      from "./counter"
+import InputAdd     from "./input-add"
+import Phonebook    from "./phonebook-control"
+import Scroll       from "./scroll"
+
+import {pass} from "./util"
 
 const Src = ({src}) => <a target="_blank" href={`../src/${src}`}>{src}</a>
 
@@ -40,18 +41,11 @@ export default () =>
 
     <section>
       <h2>Checkboxes with Undo-Redo</h2>
-      {(() => {
-        const checkeds = Undo({value: [true, false, true], Atom})
-        return <div>
-          <div>
-            <K.button disabled={K(checkeds.undo.has, R.not)}
-                      onClick={checkeds.undo}>Undo</K.button>
-            <K.button disabled={K(checkeds.redo.has, R.not)}
-                      onClick={checkeds.redo}>Redo</K.button>
-          </div>
-          <Checkboxes {...{checkeds}}/>
-        </div>
-      })()}
+      {pass(Undo({value: [true, false, true], Atom}), checkeds =>
+            <WithUndoRedo undo={checkeds.undo}
+                          redo={checkeds.redo}>
+              <Checkboxes {...{checkeds}}/>
+            </WithUndoRedo>)}
     </section>
 
     <section>
@@ -87,8 +81,9 @@ export default () =>
     <section>
       <h2>BMI controls with a shared model</h2>
       <div style={{display: "flex"}}>
-        {(bmi => [<BMI key="1" bmi={bmi}/>,
-                  <BMI key="2" bmi={bmi}/>])(Atom(mock))}
+        {pass(Atom(mock), bmi =>
+              [<BMI key="1" bmi={bmi}/>,
+               <BMI key="2" bmi={bmi}/>])}
       </div>
     </section>
 
