@@ -1,4 +1,5 @@
 import Atom  from "kefir.atom"
+import L     from "partial.lenses"
 import React from "react"
 import Undo  from "atom.undo"
 
@@ -53,7 +54,7 @@ export default () =>
       {pass(Undo({value: [true, false, true], Atom}), checkeds =>
             <WithUndoRedo undo={checkeds.undo}
                           redo={checkeds.redo}>
-              <Checkboxes {...{checkeds}}/>
+              <Checkboxes checkeds={checkeds.lens(L.define([]))}/>
             </WithUndoRedo>)}
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
