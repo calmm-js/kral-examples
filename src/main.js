@@ -13,6 +13,7 @@ import Counter      from "./counter"
 import InputAdd     from "./input-add"
 import Phonebook    from "./phonebook-control"
 import Scroll       from "./scroll"
+import Converter    from "./converter"
 
 import {pass} from "./util"
 
@@ -47,6 +48,15 @@ export default () =>
       <Checkbox/>
       <ul>
         <li><Src src="checkbox.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="converter">Celcius to Fahrenheit converter</h2>
+      <Converter/>
+      <ul>
+        <li><Src src="converter.js"/></li>
         <li><Src src="main.js"/></li>
       </ul>
     </section>
