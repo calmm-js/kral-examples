@@ -3,6 +3,4 @@ import K, {bind} from "kefir.react.html"
 import React     from "react"
 
 export default ({value = Atom("0")}) =>
-  <K.div>
-    <K.input {...bind({value})}/>°C is {K(value, c => c * 9 / 5 + 32)}°F
-  </K.div>
+  <K.p><K.input {...bind({value})}/>°C is {K(value, c => c * 9/5 + 32)}°F</K.p>
