@@ -1,8 +1,6 @@
 import L    from "partial.lenses"
 import R    from "ramda"
 
-import {iota} from "./util"
-
 export const mock =
   [{name: "Mr Digits", number: "1-23-456789"}]
 
@@ -15,7 +13,7 @@ export const Contact = {
 }
 
 export const Contacts = {
-  indices: R.pipe(R.length, iota)
+  indices: R.pipe(R.length, R.range(0))
 }
 
 export const Phonebook = {
