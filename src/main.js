@@ -14,6 +14,7 @@ import InputAdd     from "./input-add"
 import Phonebook    from "./phonebook-control"
 import Scroll       from "./scroll"
 import Converter    from "./converter"
+import BigTable     from "./big-table-control"
 
 import {pass} from "./util"
 
@@ -121,6 +122,15 @@ export default () =>
                <BMI key="2" bmi={bmi}/>])}
       </div>
       <ul>
+        <li><Src src="main.js"/></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 id="big-table">Big table</h2>
+      <BigTable/>
+      <ul>
+        <li><Src src="big-table-control.js"/></li>
         <li><Src src="main.js"/></li>
       </ul>
     </section>
