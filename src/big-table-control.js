@@ -1,5 +1,6 @@
 import Atom                    from "kefir.atom"
 import K, {bindProps, fromIds} from "kefir.react.html"
+import L                       from "partial.lenses"
 import R                       from "ramda"
 import React                   from "react"
 
@@ -37,7 +38,7 @@ const TBody = ({model, visibleRows}) =>
                       ({position: "absolute",
                         top: i * rowHeight + "px",
                         borderBottom: "1px solid grey"}))}>
-         {K(model, ({toRow, columns}) =>
+         {K(model.view(L.props("toRow", "columns")), ({toRow, columns}) =>
             toRow(i).map((column, i) =>
               <K.td style={cellWidth(columns)} key={i}>{column}</K.td>))}
        </K.tr>)}
