@@ -5,7 +5,7 @@ import React                   from "react"
 
 import * as Window from "./window"
 
-const mock = {
+export const mock = {
   tableHeight: 500,
   rowHeight: 30,
   rowCount: 10000,

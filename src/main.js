@@ -1,7 +1,8 @@
-import Atom  from "kefir.atom"
-import L     from "partial.lenses"
-import React from "react"
-import Undo  from "atom.undo"
+import Atom      from "kefir.atom"
+import K, {bind} from "kefir.react.html"
+import L         from "partial.lenses"
+import React     from "react"
+import Undo      from "atom.undo"
 
 import BMI          from "./bmi-control"
 import {mock}       from "./bmi-meta"
@@ -14,7 +15,7 @@ import InputAdd     from "./input-add"
 import Phonebook    from "./phonebook-control"
 import Scroll       from "./scroll"
 import Converter    from "./converter"
-import BigTable     from "./big-table-control"
+import BigTable, * as BT from "./big-table-control"
 
 import {pass} from "./util"
 
@@ -25,6 +26,29 @@ export default () =>
     <h1>Kefir+React+Atom Examples</h1>
 
     <a href="https://github.com/calmm-js/kral-examples">GitHub</a>
+
+    <section>
+      <h2 id="big-table">Big table</h2>
+      {pass(() => {
+        const model = Atom(BT.mock)
+
+        const Slider = ({prop, ...props}) =>
+          <K.label>{prop}: {model.view(prop)}
+            <K.input type="range" {...props} style={{width: "100%"}}
+                     {...bind({value: model.lens(prop, L.normalize(Number))})}/>
+          </K.label>
+
+        return <div>
+            <Slider min={50} max={1000} prop="tableHeight"/>
+            <Slider min={0} max={10000} prop="rowCount"/>
+            <Slider min={10} max={50} prop="rowHeight"/>
+            <BigTable {...{model}}/>
+          </div>})}
+      <ul>
+        <li><Src src="big-table-control.js"/></li>
+        <li><Src src="main.js"/></li>
+      </ul>
+    </section>
 
     <section>
       <h2 id="counter">Simple counter</h2>
@@ -122,15 +146,6 @@ export default () =>
                <BMI key="2" bmi={bmi}/>])}
       </div>
       <ul>
-        <li><Src src="main.js"/></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 id="big-table">Big table</h2>
-      <BigTable/>
-      <ul>
-        <li><Src src="big-table-control.js"/></li>
         <li><Src src="main.js"/></li>
       </ul>
     </section>
