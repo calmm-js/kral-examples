@@ -5,7 +5,7 @@ import React                   from "react"
 
 import * as Window from "./window"
 
-const mock = {
+export const mock = {
   tableHeight: 500,
   rowHeight: 30,
   rowCount: 10000,
@@ -19,7 +19,7 @@ const cellWidth = columns =>
 
 const visibleRows = ({tableHeight, rowHeight, rowCount}, scrollTop) =>
   ({begin: Math.floor(scrollTop / rowHeight),
-    end: Math.ceil((scrollTop + tableHeight) / rowHeight)})
+    end: Math.min(rowCount, Math.ceil((scrollTop + tableHeight) / rowHeight))})
 
 const THead = ({columns}) =>
   <thead>
