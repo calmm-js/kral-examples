@@ -1,6 +1,6 @@
 import Atom                    from "kefir.atom"
 import K, {bindProps, fromIds} from "kefir.react.html"
-import L                       from "partial.lenses"
+import * as L                  from "partial.lenses"
 import R                       from "ramda"
 import React                   from "react"
 
@@ -34,10 +34,9 @@ const TBody = ({model, visibleRows}) =>
   <K.tbody>
     {fromIds(K(visibleRows, ({begin, end}) => R.range(begin, end)), i =>
        <K.tr key={i}
-             style={K(model, ({rowHeight}) =>
-                      ({position: "absolute",
-                        top: i * rowHeight + "px",
-                        borderBottom: "1px solid grey"}))}>
+             style={{position: "absolute",
+                     top: K(model, ({rowHeight}) => i * rowHeight + "px"),
+                     borderBottom: "1px solid grey"}}>
          {K(model.view(L.props("toRow", "columns")), ({toRow, columns}) =>
             toRow(i).map((column, i) =>
               <K.td style={cellWidth(columns)} key={i}>{column}</K.td>))}
@@ -52,13 +51,12 @@ export default ({model = mock, scrollTop = Atom(0)}) =>
       <THead columns={K(model, R.prop("columns"))}/>
     </table>
     <K.div {...bindProps({ref: "onScroll", scrollTop})}
-           style={K(model, ({tableHeight}) =>
-                    ({position: "relative",
-                      overflowX: "hidden",
-                      borderBottom: "1px solid black",
-                      height: tableHeight + "px"}))}>
-      <K.table style={K(model, ({rowCount, rowHeight}) =>
-                        ({height: rowCount * rowHeight + "px"}))}>
+           style={{position: "relative",
+                   overflowX: "hidden",
+                   borderBottom: "1px solid black",
+                   height: K(model, ({tableHeight}) => tableHeight + "px")}}>
+      <K.table style={{height: K(model, ({rowCount, rowHeight}) =>
+                                 rowCount * rowHeight + "px")}}>
         <TBody {...{model, visibleRows: K(model, scrollTop, visibleRows)}}/>
       </K.table>
     </K.div>

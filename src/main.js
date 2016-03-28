@@ -1,6 +1,6 @@
 import Atom      from "kefir.atom"
 import K, {bind} from "kefir.react.html"
-import L         from "partial.lenses"
+import * as L    from "partial.lenses"
 import React     from "react"
 import Undo      from "atom.undo"
 
