@@ -7,7 +7,7 @@ import React                   from "react"
 import * as Window from "./window"
 
 export const mock = {
-  tableHeight: 500,
+  tableHeight: 250,
   rowHeight: 30,
   rowCount: 10000,
   columns: ["ID", "ID * 10", "Random Number"],
