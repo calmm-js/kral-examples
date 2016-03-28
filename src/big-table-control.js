@@ -11,7 +11,7 @@ export const mock = {
   rowHeight: 30,
   rowCount: 10000,
   columns: ["ID", "ID * 10", "Random Number"],
-  toRow: id => [id, id * 10, Math.floor(Math.random() * 100)]
+  toRow: id => [`${id}`, `${id * 10}`, `${Math.floor(Math.random() * 100)}`]
 }
 
 const cellWidth = columns =>
