@@ -26,7 +26,7 @@ const Stored = ({key, ...props}) =>
               storage: localStorage,
               time: 15*60*1000, // 15 minutes
               Atom,
-              ...props})
+              debounce: 250, ...props})
 
 expireNow({storage: localStorage, regex: /^kral-examples:/})
 
