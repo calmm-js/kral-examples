@@ -1,8 +1,9 @@
-import Atom      from "kefir.atom"
-import K, {bind} from "kefir.react.html"
-import * as L    from "partial.lenses"
-import React     from "react"
-import Undo      from "atom.undo"
+import * as L              from "partial.lenses"
+import Atom                from "kefir.atom"
+import K, {bind}           from "kefir.react.html"
+import React               from "react"
+import Stored, {expireNow} from "atom.storage"
+import Undo                from "atom.undo"
 
 import BMI          from "./bmi-control"
 import {mock}       from "./bmi-meta"
@@ -18,6 +19,8 @@ import Converter    from "./converter"
 import BigTable, * as BT from "./big-table-control"
 
 import {pass} from "./util"
+
+expireNow({storage: localStorage, regex: /^kral-examples:/})
 
 const Src = ({src, lines = ""}) =>
   <a target="_blank"
@@ -48,7 +51,7 @@ export default () =>
           </div>})}
       <ul>
         <li><Src src="big-table-control.js"/></li>
-        <li><Src src="main.js" lines="#L34-L48"/></li>
+        <li><Src src="main.js" lines="#L37-L51"/></li>
       </ul>
     </section>
 
@@ -57,7 +60,7 @@ export default () =>
       <Counter/>
       <ul>
         <li><Src src="counter.js"/></li>
-        <li><Src src="main.js" lines="#L57"/></li>
+        <li><Src src="main.js" lines="#L60"/></li>
       </ul>
     </section>
 
@@ -66,7 +69,7 @@ export default () =>
       <Clock/>
       <ul>
         <li><Src src="clock.js"/></li>
-        <li><Src src="main.js" lines="#L66"/></li>
+        <li><Src src="main.js" lines="#L69"/></li>
       </ul>
     </section>
 
@@ -75,7 +78,7 @@ export default () =>
       <Checkbox/>
       <ul>
         <li><Src src="checkbox.js"/></li>
-        <li><Src src="main.js" lines="#L75"/></li>
+        <li><Src src="main.js" lines="#L78"/></li>
       </ul>
     </section>
 
@@ -84,13 +87,18 @@ export default () =>
       <Converter/>
       <ul>
         <li><Src src="converter.js"/></li>
-        <li><Src src="main.js" lines="#L84"/></li>
+        <li><Src src="main.js" lines="#L87"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="undo-redo-checkboxes">Checkboxes with Undo-Redo</h2>
-      {pass(Undo({value: [true, false, true], Atom}), checkeds =>
+      {pass(Undo({value: [true, false, true],
+                  Atom: value => Stored({value,
+                                         key: "kral-examples:undo-redo-checkboxes",
+                                         storage: localStorage,
+                                         time: 1*60*60*1000, // 1 hour
+                                         Atom})}), checkeds =>
             <WithUndoRedo undo={checkeds.undo}
                           redo={checkeds.redo}>
               <Checkboxes checkeds={checkeds.lens(L.define([]))}/>
@@ -98,7 +106,7 @@ export default () =>
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
         <li><Src src="checkboxes.js"/></li>
-        <li><Src src="main.js" lines="#L93-L97"/></li>
+        <li><Src src="main.js" lines="#L96-L105"/></li>
       </ul>
     </section>
 
@@ -107,7 +115,7 @@ export default () =>
       <InputAdd/>
       <ul>
         <li><Src src="input-add.js"/></li>
-        <li><Src src="main.js" lines="#L107"/></li>
+        <li><Src src="main.js" lines="#L115"/></li>
       </ul>
     </section>
 
@@ -116,7 +124,7 @@ export default () =>
       <Scroll/>
       <ul>
         <li><Src src="scroll.js"/></li>
-        <li><Src src="main.js" lines="#L116"/></li>
+        <li><Src src="main.js" lines="#L124"/></li>
       </ul>
     </section>
 
@@ -126,7 +134,7 @@ export default () =>
       <ul>
         <li><Src src="phonebook-control.js"/></li>
         <li><Src src="phonebook-meta.js"/></li>
-        <li><Src src="main.js" lines="#L125"/></li>
+        <li><Src src="main.js" lines="#L133"/></li>
       </ul>
     </section>
 
@@ -136,7 +144,7 @@ export default () =>
       <ul>
         <li><Src src="bmi-control.js"/></li>
         <li><Src src="bmi-meta.js"/></li>
-        <li><Src src="main.js" lines="#L135"/></li>
+        <li><Src src="main.js" lines="#L143"/></li>
       </ul>
     </section>
 
@@ -148,7 +156,7 @@ export default () =>
                <BMI key="2" bmi={bmi}/>])}
       </div>
       <ul>
-        <li><Src src="main.js" lines="#L146-L148"/></li>
+        <li><Src src="main.js" lines="#L154-L156"/></li>
       </ul>
     </section>
   </main>
