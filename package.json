@@ -43,7 +43,7 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "envify": "^3.4.0",
-    "eslint": "2.5.x",
+    "eslint": "^2.5.1",
     "eslint-plugin-react": "^4.2.3",
     "less": "^2.6.1",
     "uglifyify": "^3.0.1",
