@@ -19,7 +19,9 @@ import BigTable, * as BT from "./big-table-control"
 
 import {pass} from "./util"
 
-const Src = ({src}) => <a target="_blank" href={`../src/${src}`}>{src}</a>
+const Src = ({src, lines = ""}) =>
+  <a target="_blank"
+     href={`https://github.com/calmm-js/kral-examples/blob/master/src/${src}${lines}`}>{src}</a>
 
 export default () =>
   <main>
@@ -46,7 +48,7 @@ export default () =>
           </div>})}
       <ul>
         <li><Src src="big-table-control.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L34-L48"/></li>
       </ul>
     </section>
 
@@ -55,7 +57,7 @@ export default () =>
       <Counter/>
       <ul>
         <li><Src src="counter.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L57"/></li>
       </ul>
     </section>
 
@@ -64,7 +66,7 @@ export default () =>
       <Clock/>
       <ul>
         <li><Src src="clock.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L66"/></li>
       </ul>
     </section>
 
@@ -73,7 +75,7 @@ export default () =>
       <Checkbox/>
       <ul>
         <li><Src src="checkbox.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L75"/></li>
       </ul>
     </section>
 
@@ -82,7 +84,7 @@ export default () =>
       <Converter/>
       <ul>
         <li><Src src="converter.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L84"/></li>
       </ul>
     </section>
 
@@ -96,7 +98,7 @@ export default () =>
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
         <li><Src src="checkboxes.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L93-L97"/></li>
       </ul>
     </section>
 
@@ -105,7 +107,7 @@ export default () =>
       <InputAdd/>
       <ul>
         <li><Src src="input-add.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L107"/></li>
       </ul>
     </section>
 
@@ -114,7 +116,7 @@ export default () =>
       <Scroll/>
       <ul>
         <li><Src src="scroll.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L116"/></li>
       </ul>
     </section>
 
@@ -124,7 +126,7 @@ export default () =>
       <ul>
         <li><Src src="phonebook-control.js"/></li>
         <li><Src src="phonebook-meta.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L125"/></li>
       </ul>
     </section>
 
@@ -134,7 +136,7 @@ export default () =>
       <ul>
         <li><Src src="bmi-control.js"/></li>
         <li><Src src="bmi-meta.js"/></li>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L135"/></li>
       </ul>
     </section>
 
@@ -146,7 +148,7 @@ export default () =>
                <BMI key="2" bmi={bmi}/>])}
       </div>
       <ul>
-        <li><Src src="main.js"/></li>
+        <li><Src src="main.js" lines="#L146-L148"/></li>
       </ul>
     </section>
   </main>
