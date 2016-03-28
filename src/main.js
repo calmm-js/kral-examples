@@ -18,8 +18,7 @@ import * as PM           from "./phonebook-meta"
 import Scroll            from "./scroll"
 import Converter         from "./converter"
 import BigTable, * as BT from "./big-table-control"
-
-import {pass} from "./util"
+import {pass}            from "./util"
 
 const Undo = props => makeUndo({Atom, ...props})
 const Stored = ({key, ...props}) =>
@@ -35,14 +34,15 @@ const Src = ({src, lines = ""}) =>
   <a target="_blank"
      href={`https://github.com/calmm-js/kral-examples/blob/master/src/${src}${lines}`}>{src}</a>
 
-export default () =>
-  <main>
+const HL = ({id, children}) => <h2 id={id}><a href={`#${id}`}>{children}</a></h2>
+
+export default () => <main>
     <h1>Kefir+React+Atom Examples</h1>
 
     <a href="https://github.com/calmm-js/kral-examples">GitHub</a>
 
     <section>
-      <h2 id="big-table">Big table</h2>
+      <HL id="big-table">Big table</HL>
       {pass(() => {
         const model = Atom(BT.mock)
 
@@ -65,7 +65,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="counter">Simple counter</h2>
+      <HL id="counter">Simple counter</HL>
       <Counter value={Stored({key: "counter", value: 0})}/>
       <ul>
         <li><Src src="counter.js"/></li>
@@ -74,7 +74,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="clock">Simple clock</h2>
+      <HL id="clock">Simple clock</HL>
       <Clock/>
       <ul>
         <li><Src src="clock.js"/></li>
@@ -83,7 +83,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="checkbox">Simple checkbox</h2>
+      <HL id="checkbox">Simple checkbox</HL>
       <Checkbox checked={Stored({key: "checkbox", value: false})}/>
       <ul>
         <li><Src src="checkbox.js"/></li>
@@ -92,7 +92,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="converter">Celcius to Fahrenheit converter</h2>
+      <HL id="converter">Celcius to Fahrenheit converter</HL>
       <Converter value={Stored({key: "converter", value: 0})}/>
       <ul>
         <li><Src src="converter.js"/></li>
@@ -101,7 +101,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="undo-redo-checkboxes">Checkboxes with Undo-Redo</h2>
+      <HL id="undo-redo-checkboxes">Checkboxes with Undo-Redo</HL>
       {pass(Undo({value: [true, false, true],
                   Atom: value => Stored({key: "undo-redo-checkboxes",
                                          value})}), checkeds =>
@@ -117,7 +117,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="input-add">Input Add</h2>
+      <HL id="input-add">Input Add</HL>
       <InputAdd/>
       <ul>
         <li><Src src="input-add.js"/></li>
@@ -126,7 +126,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="scroll">Scroll</h2>
+      <HL id="scroll">Scroll</HL>
       <Scroll/>
       <ul>
         <li><Src src="scroll.js"/></li>
@@ -135,7 +135,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="phonebook">Phonebook</h2>
+      <HL id="phonebook">Phonebook</HL>
       {pass(Stored({key: "phonebook",
                     value: PM.mock,
                     Atom: value => Undo({value})}), phonebook =>
@@ -151,7 +151,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="bmi">BMI control</h2>
+      <HL id="bmi">BMI control</HL>
       <BMI/>
       <ul>
         <li><Src src="bmi-control.js"/></li>
@@ -161,7 +161,7 @@ export default () =>
     </section>
 
     <section>
-      <h2 id="bmi-shared">BMI controls with a shared model</h2>
+      <HL id="bmi-shared">BMI controls with a shared model</HL>
       <div style={{display: "flex"}}>
         {pass(Stored({key: "bmi-shared", value: BM.mock}), bmi =>
               [<BMI key="1" bmi={bmi}/>,
