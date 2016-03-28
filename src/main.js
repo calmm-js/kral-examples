@@ -1,24 +1,33 @@
-import * as L              from "partial.lenses"
-import Atom                from "kefir.atom"
-import K, {bind}           from "kefir.react.html"
-import React               from "react"
-import Stored, {expireNow} from "atom.storage"
-import Undo                from "atom.undo"
+import * as L                  from "partial.lenses"
+import Atom                    from "kefir.atom"
+import K, {bind}               from "kefir.react.html"
+import React                   from "react"
+import makeStored, {expireNow} from "atom.storage"
+import makeUndo                from "atom.undo"
 
-import BMI          from "./bmi-control"
-import {mock}       from "./bmi-meta"
-import Checkbox     from "./checkbox"
-import Checkboxes   from "./checkboxes"
-import WithUndoRedo from "./with-undo-redo"
-import Clock        from "./clock"
-import Counter      from "./counter"
-import InputAdd     from "./input-add"
-import Phonebook    from "./phonebook-control"
-import Scroll       from "./scroll"
-import Converter    from "./converter"
+import BMI               from "./bmi-control"
+import * as BM           from "./bmi-meta"
+import Checkbox          from "./checkbox"
+import Checkboxes        from "./checkboxes"
+import WithUndoRedo      from "./with-undo-redo"
+import Clock             from "./clock"
+import Counter           from "./counter"
+import InputAdd          from "./input-add"
+import Phonebook         from "./phonebook-control"
+import * as PM           from "./phonebook-meta"
+import Scroll            from "./scroll"
+import Converter         from "./converter"
 import BigTable, * as BT from "./big-table-control"
 
 import {pass} from "./util"
+
+const Undo = props => makeUndo({Atom, ...props})
+const Stored = ({key, ...props}) =>
+  makeStored({key: `kral-examples:${key}`,
+              storage: localStorage,
+              time: 15*60*1000, // 15 minutes
+              Atom,
+              ...props})
 
 expireNow({storage: localStorage, regex: /^kral-examples:/})
 
@@ -51,16 +60,16 @@ export default () =>
           </div>})}
       <ul>
         <li><Src src="big-table-control.js"/></li>
-        <li><Src src="main.js" lines="#L37-L51"/></li>
+        <li><Src src="main.js" lines="#L46-L60"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="counter">Simple counter</h2>
-      <Counter/>
+      <Counter value={Stored({key: "counter", value: 0})}/>
       <ul>
         <li><Src src="counter.js"/></li>
-        <li><Src src="main.js" lines="#L60"/></li>
+        <li><Src src="main.js" lines="#L69"/></li>
       </ul>
     </section>
 
@@ -69,36 +78,33 @@ export default () =>
       <Clock/>
       <ul>
         <li><Src src="clock.js"/></li>
-        <li><Src src="main.js" lines="#L69"/></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 id="checkbox">Simple checkbox</h2>
-      <Checkbox/>
-      <ul>
-        <li><Src src="checkbox.js"/></li>
         <li><Src src="main.js" lines="#L78"/></li>
       </ul>
     </section>
 
     <section>
+      <h2 id="checkbox">Simple checkbox</h2>
+      <Checkbox checked={Stored({key: "checkbox", value: false})}/>
+      <ul>
+        <li><Src src="checkbox.js"/></li>
+        <li><Src src="main.js" lines="#L87"/></li>
+      </ul>
+    </section>
+
+    <section>
       <h2 id="converter">Celcius to Fahrenheit converter</h2>
-      <Converter/>
+      <Converter value={Stored({key: "converter", value: 0})}/>
       <ul>
         <li><Src src="converter.js"/></li>
-        <li><Src src="main.js" lines="#L87"/></li>
+        <li><Src src="main.js" lines="#L96"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="undo-redo-checkboxes">Checkboxes with Undo-Redo</h2>
       {pass(Undo({value: [true, false, true],
-                  Atom: value => Stored({value,
-                                         key: "kral-examples:undo-redo-checkboxes",
-                                         storage: localStorage,
-                                         time: 1*60*60*1000, // 1 hour
-                                         Atom})}), checkeds =>
+                  Atom: value => Stored({key: "undo-redo-checkboxes",
+                                         value})}), checkeds =>
             <WithUndoRedo undo={checkeds.undo}
                           redo={checkeds.redo}>
               <Checkboxes checkeds={checkeds.lens(L.define([]))}/>
@@ -106,7 +112,7 @@ export default () =>
       <ul>
         <li><Src src="with-undo-redo.js"/></li>
         <li><Src src="checkboxes.js"/></li>
-        <li><Src src="main.js" lines="#L96-L105"/></li>
+        <li><Src src="main.js" lines="#L105-L111"/></li>
       </ul>
     </section>
 
@@ -115,7 +121,7 @@ export default () =>
       <InputAdd/>
       <ul>
         <li><Src src="input-add.js"/></li>
-        <li><Src src="main.js" lines="#L115"/></li>
+        <li><Src src="main.js" lines="#L121"/></li>
       </ul>
     </section>
 
@@ -124,17 +130,23 @@ export default () =>
       <Scroll/>
       <ul>
         <li><Src src="scroll.js"/></li>
-        <li><Src src="main.js" lines="#L124"/></li>
+        <li><Src src="main.js" lines="#L130"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="phonebook">Phonebook</h2>
-      <Phonebook/>
+      {pass(Stored({key: "phonebook",
+                    value: PM.mock,
+                    Atom: value => Undo({value})}), phonebook =>
+            <WithUndoRedo undo={phonebook.undo}
+                          redo={phonebook.redo}>
+              <Phonebook {...{phonebook}}/>
+            </WithUndoRedo>)}
       <ul>
         <li><Src src="phonebook-control.js"/></li>
         <li><Src src="phonebook-meta.js"/></li>
-        <li><Src src="main.js" lines="#L133"/></li>
+        <li><Src src="main.js" lines="#L139-L145"/></li>
       </ul>
     </section>
 
@@ -144,19 +156,19 @@ export default () =>
       <ul>
         <li><Src src="bmi-control.js"/></li>
         <li><Src src="bmi-meta.js"/></li>
-        <li><Src src="main.js" lines="#L143"/></li>
+        <li><Src src="main.js" lines="#L155"/></li>
       </ul>
     </section>
 
     <section>
       <h2 id="bmi-shared">BMI controls with a shared model</h2>
       <div style={{display: "flex"}}>
-        {pass(Atom(mock), bmi =>
+        {pass(Stored({key: "bmi-shared", value: BM.mock}), bmi =>
               [<BMI key="1" bmi={bmi}/>,
                <BMI key="2" bmi={bmi}/>])}
       </div>
       <ul>
-        <li><Src src="main.js" lines="#L154-L156"/></li>
+        <li><Src src="main.js" lines="#L166-L168"/></li>
       </ul>
     </section>
   </main>
