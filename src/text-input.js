@@ -5,7 +5,7 @@ import React          from "react"
 export default ({value = Atom("")}) => {
   const editing = Atom(false)
   const exit = () => editing.set(false)
-  const save = e => {value.set(e.target.value); exit(e)}
+  const save = e => {value.set(e.target.value); exit()}
   return fromKefir(K(editing, e => e
     ? <K.input key="1"
                type="text"
