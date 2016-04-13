@@ -1,6 +1,6 @@
-import K     from "kefir.react.html"
-import R     from "ramda"
-import React from "react"
+import * as R from "ramda"
+import K      from "kefir.react.html"
+import React  from "react"
 
 export default ({undo, redo, ...props}) =>
   <div>

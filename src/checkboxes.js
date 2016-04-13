@@ -1,5 +1,5 @@
+import * as R       from "ramda"
 import K, {fromIds} from "kefir.react.html"
-import R            from "ramda"
 import React        from "react"
 
 import Checkbox from "./checkbox"

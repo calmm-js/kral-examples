@@ -1,8 +1,9 @@
+import * as L                  from "partial.lenses"
+import * as R                  from "ramda"
 import Atom                    from "kefir.atom"
 import K, {bindProps, fromIds} from "kefir.react.html"
-import * as L                  from "partial.lenses"
-import R                       from "ramda"
 import React                   from "react"
+import {mapi}                  from "./util"
 
 import * as Window from "./window"
 
@@ -25,7 +26,7 @@ const visibleRows = ({tableHeight, rowHeight, rowCount}, scrollTop) =>
 const THead = ({columns}) =>
   <thead>
     <K.tr>
-      {K(columns, R.mapi((column, i) =>
+      {K(columns, mapi((column, i) =>
          <K.th key={i} style={cellWidth(columns)}>{column}</K.th>))}
     </K.tr>
   </thead>

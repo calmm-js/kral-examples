@@ -1,6 +1,6 @@
+import * as R    from "ramda"
 import Atom      from "kefir.atom"
 import K, {bind} from "kefir.react.html"
-import R         from "ramda"
 import React     from "react"
 
 export default ({elems = Atom([]), entry = Atom("")}) =>

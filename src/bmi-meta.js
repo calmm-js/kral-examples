@@ -1,5 +1,5 @@
 import * as L from "partial.lenses"
-import R      from "ramda"
+import * as R from "ramda"
 
 export const mock = {height: 180, weight: 80}
 

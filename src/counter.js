@@ -1,7 +1,7 @@
-import Atom  from "kefir.atom"
-import K     from "kefir.react.html"
-import R     from "ramda"
-import React from "react"
+import * as R from "ramda"
+import Atom   from "kefir.atom"
+import K      from "kefir.react.html"
+import React  from "react"
 
 export default ({value = Atom(0)}) =>
   <div>
