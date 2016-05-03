@@ -3,3 +3,4 @@
 node_modules
 public/app.js
 public/bundle.css
+public/polyfill.min.js
