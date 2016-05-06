@@ -1,5 +1,6 @@
 import * as R from "ramda"
 
-export const pass = (...args) => R.last(args)(...R.dropLast(1, args))
+export const pass = (x, f) => f(x)
+export const scope = f => f()
 
 export const mapi = R.curry((x2i2y, xs) => xs.map(x2i2y))

@@ -18,7 +18,7 @@ import * as PM           from "./phonebook-meta"
 import Scroll            from "./scroll"
 import Converter         from "./converter"
 import BigTable, * as BT from "./big-table-control"
-import {pass}            from "./util"
+import {pass, scope}     from "./util"
 
 const Undo = props => makeUndo({Atom, ...props})
 const Stored = ({key, ...props}) =>
@@ -43,7 +43,7 @@ export default () => <main>
 
     <section>
       <HL id="big-table">Big table</HL>
-      {pass(() => {
+      {scope(() => {
         const model = Atom(BT.mock)
 
         const Slider = ({prop, ...props}) =>
