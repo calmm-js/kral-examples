@@ -7,7 +7,7 @@ import * as M from "./bmi-meta"
 const Slider = ({title, units, value, ...props}) =>
   <div>
     <K.div>{title}: {value}{units}</K.div>
-    <K.input type="range" {...bind({value})} {...props}/>
+    <K.input type="range" {...props} {...bind({value})}/>
   </div>
 
 const BMI = ({bmi}) =>
