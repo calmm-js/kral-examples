@@ -29,10 +29,10 @@
     "kefir": "^3.2.3",
     "kefir.atom": "^2.2.2",
     "kefir.react.html": "^3.2.3",
-    "partial.lenses": "^3.5.0",
+    "partial.lenses": "^3.6.0",
     "ramda": "^0.21.0",
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
