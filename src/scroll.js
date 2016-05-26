@@ -3,6 +3,8 @@ import K, {bind, bindProps} from "kefir.react.html"
 import * as L               from "partial.lenses"
 import React                from "react"
 
+import {NumberInput} from "./restricted-input"
+
 const cat = [
 `                         ..,co88oc.oo8888cc,..`,
 `  o8o.               ..,o8889689ooo888o"88888888oooc..`,
@@ -36,12 +38,10 @@ const Scroller = ({scrollTop, scrollLeft}) =>
     <pre>{cat}</pre>
   </div>
 
-const NumberInput = ({label, value}) =>
+const ScrollInput = ({label, value}) =>
   <div>
     <label>{label}
-      <K.input type="number"
-               {...bind({value: value.lens(L.normalize(
-                 x => typeof x === "string" ? parseInt(x, 10) : x))})}/>
+      <NumberInput {...{value}}/>
     </label>
   </div>
 
@@ -49,6 +49,6 @@ export default ({scrollTop = Atom(0), scrollLeft = Atom(0)}) =>
   <div>
     <Scroller {...{scrollTop, scrollLeft}}/>
     <Scroller {...{scrollTop, scrollLeft}}/>
-    <NumberInput label="y " value={scrollTop}/>
-    <NumberInput label="x " value={scrollLeft}/>
+    <ScrollInput label="y " value={scrollTop}/>
+    <ScrollInput label="x " value={scrollLeft}/>
   </div>

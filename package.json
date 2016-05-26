@@ -5,7 +5,7 @@
   "main": "public/app.js",
   "scripts": {
     "build": "npm run build:js && npm run build:css && npm run polyfill",
-    "build:css": "lessc src/*.less > public/bundle.css",
+    "build:css": "lessc src/main.less public/bundle.css",
     "build:js": "export NODE_ENV=production && browserify src/app.js -t babelify -t envify -g uglifyify > public/app.js",
     "lint": "eslint src test",
     "polyfill": "cp node_modules/babel-polyfill/dist/polyfill.min.js public/polyfill.min.js",
