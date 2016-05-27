@@ -6,7 +6,10 @@ export const RestrictedInput = ({value, meta: {format, parse}, ...props}) => {
   const edited = Atom()
   const shown = K(value, edited, (value, edited) =>
                   edited === undefined ? format(value) : edited)
-  const exit = () => edited.set()
+  const exit = e => {
+    edited.set()
+    e.target.blur()
+  }
   return <K.input {...classes("restricted-input",
                               K(shown, shown =>
                                 parse(shown) !== undefined
@@ -23,7 +26,7 @@ export const RestrictedInput = ({value, meta: {format, parse}, ...props}) => {
                       edited.set(input)
                     }
                   }}
-                  onKeyDown={e => e.key === "Escape" && exit()}
+                  onKeyDown={e => e.key === "Escape" && exit(e)}
                   onBlur={exit}
                   {...props}/>
 }
@@ -36,5 +39,5 @@ export const number = {
   }
 }
 
-export const NumberInput = ({meta = number, ...props}) =>
-  <RestrictedInput {...{meta}} {...props}/>
+export const NumberInput = ({meta = number, type="number", ...props}) =>
+  <RestrictedInput {...{meta, type}} {...props}/>
