@@ -13,3 +13,6 @@
 .bmi.bmi-obese .bmi-value {
   color: red;
 }
+.restricted-input.invalid {
+  color: red;
+}
