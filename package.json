@@ -4,11 +4,10 @@
   "description": "Kefir+React+Atom Examples",
   "main": "public/app.js",
   "scripts": {
-    "build": "npm run build:js && npm run build:css && npm run polyfill",
+    "build": "npm run build:js && npm run build:css",
     "build:css": "lessc src/main.less public/bundle.css",
-    "build:js": "export NODE_ENV=production && browserify src/app.js -t babelify -t envify -g uglifyify > public/app.js",
+    "build:js": "cp node_modules/babel-polyfill/dist/polyfill.min.js public/app.js && NODE_ENV=production browserify src/app.js -t babelify -t envify -g uglifyify >> public/app.js",
     "lint": "eslint src test",
-    "polyfill": "cp node_modules/babel-polyfill/dist/polyfill.min.js public/polyfill.min.js",
     "prepublish": "npm run lint && npm run build",
     "watch": "npm run watch:js & npm run watch:css",
     "watch:css": "npm run build:css && watch-run -p 'src/*.less' 'npm run build:css'",
